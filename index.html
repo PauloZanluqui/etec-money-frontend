@@ -6,8 +6,9 @@
     <title>ETEC Money</title>
     <link rel="icon" type="image/x-icon" href="/assets/icon.ico" />
     <link href="styles.css" rel="stylesheet" />
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
   </head>
   <body>
     <div id="overlay" class="overlay"></div>
@@ -49,7 +50,7 @@
       <div class="relative overflow-x-auto w-3/5 m-5 rounded">
         <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between px-1 py-4">
           <div>
-            <button onclick="toggleDropdown()" class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+            <button onclick="toggleDropdown()" class="inline-flex items-center text-white bg-gray-800 border border-gray-600 focus:outline-none hover:bg-gray-700 hover:border-gray-600 focus:ring-4 focus:ring-gray-700 font-medium rounded-lg text-sm px-3 py-1.5" type="button">
               <svg class="w-4 h-4 me-2" fill="white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707L15 12.414V19a1 1 0 01-.553.894l-4 2A1 1 0 019 21v-8.586l-4.707-5.707A1 1 0 014 6.586V4z" />
               </svg>
@@ -60,24 +61,24 @@
             </button>
 
             <!-- Dropdown menu -->
-            <div id="dropdown" class="hidden absolute left-0 z-10 mt-2 w-44 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-              <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200">
+            <div id="dropdown" class="hidden absolute left-0 z-10 mt-2 w-44 bg-gray-700 divide-y divide-gray-100 rounded-lg shadow">
+              <ul class="p-3 space-y-1 text-sm text-gray-200">
                 <li>
-                  <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                    <input checked onclick="applyFilter('all')" id="radio-all" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label for="radio-all" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Todos</label>
+                  <div class="flex items-center p-2 rounded hover:bg-gray-600">
+                    <input checked onclick="applyFilter('all')" id="radio-all" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2" />
+                    <label for="radio-all" class="w-full ms-2 text-sm font-medium text-gray-300 rounded">Todos</label>
                   </div>
                 </li>
                 <li>
-                  <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                    <input onclick="applyFilter('credit')" id="radio-credit" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label for="radio-credit" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Crédito</label>
+                  <div class="flex items-center p-2 rounded hover:bg-gray-600">
+                    <input onclick="applyFilter('credit')" id="radio-credit" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2" />
+                    <label for="radio-credit" class="w-full ms-2 text-sm font-medium text-gray-300 rounded">Crédito</label>
                   </div>
                 </li>
                 <li>
-                  <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                    <input onclick="applyFilter('debit')" id="radio-debit" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label for="radio-debit" class="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Débito</label>
+                  <div class="flex items-center p-2 rounded hover:bg-gray-600">
+                    <input onclick="applyFilter('debit')" id="radio-debit" type="radio" value="" name="filter-radio" class="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 focus:ring-blue-600 ring-offset-gray-800 focus:ring-offset-gray-800 focus:ring-2" />
+                    <label for="radio-debit" class="w-full ms-2 text-sm font-medium text-gray-300 rounded">Débito</label>
                   </div>
                 </li>
               </ul>
@@ -86,14 +87,14 @@
 
           <div class="relative">
             <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+              <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
             </div>
             <input type="text" id="table-search" class="block p-2 ps-10 text-sm text-white rounded-lg w-96 bg-gray-700 placeholder-gray-400" placeholder="Pesquisa" />
           </div>
         </div>
 
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead class="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-400">
+          <thead class="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
               <th class="px-6 py-3">Id</th>
               <th class="px-6 py-3">Descrição</th>
@@ -115,7 +116,7 @@
 
       <form class="m-5">
         <div class="flex flex-wrap -mx-3 mb-6">
-          <input type="hidden" id="itemId" />
+          <input type="hidden" id="transaction-id" />
           <div class="w-full px-3">
             <label class="block uppercase tracking-wide text-white text-xs font-bold mb-2" for="title"> Título </label>
             <input class="appearance-none block w-full bg-white rounded py-3 px-4 mb-3 focus:outline-none focus:bg-white" id="title" type="text" placeholder="Título..." />
